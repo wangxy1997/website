@@ -1,0 +1,26 @@
+/* wangxy 2020-09-09 css begin*/
+*{
+  padding: 0;
+  margin: 0;
+}
+html,body,#app{
+  height: 100%;
+  width: 100%;
+}
+body{
+  font-family: 微软雅黑,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+}
+.login{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(50%, #35394a), color-stop(100%, rgb(0, 0, 0)));
+  background: -webkit-linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
+  background: linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
+  width: 400px;
+  height: 500px;
+  box-shadow: -15px 15px 15px rgba(6, 17, 47, 0.7);
+}
