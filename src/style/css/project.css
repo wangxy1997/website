@@ -1,16 +1,19 @@
 /* wangxy 2020-09-09 css begin*/
-*{
+* {
   padding: 0;
   margin: 0;
 }
-html,body,#app{
+
+html, body, #app {
   height: 100%;
   width: 100%;
 }
-body{
-  font-family: 微软雅黑,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+
+body {
+  font-family: 微软雅黑, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
-.login{
+
+.login {
   position: absolute;
   left: 0;
   right: 0;
@@ -20,7 +23,82 @@ body{
   background: -webkit-gradient(linear, left bottom, right top, color-stop(50%, #35394a), color-stop(100%, rgb(0, 0, 0)));
   background: -webkit-linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
   background: linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
-  width: 400px;
-  height: 500px;
+  width: 350px;
+  height: 430px;
   box-shadow: -15px 15px 15px rgba(6, 17, 47, 0.7);
+  padding: 50px 30px;
+  box-sizing: border-box;
+}
+
+.login_title {
+  color: #D3D7F7;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login_form i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  opacity: 1;
+  font-size: 18px;
+}
+.login_form .login_input .el-input__inner {
+  background: transparent;
+  border: 0;
+  padding-left: 30px;
+  font-size: 18px;
+  color: #61BFFF;
+}
+.login_form .el-form-item{
+  position: relative;
+  margin-bottom: 0;
+}
+.icon_opacity{
+  opacity: .5 !important;
+}
+
+
+
+
+
+/*动画效果*/
+
+button {
+  border: 2px solid white;
+  background: transparent;
+  text-transform: uppercase;
+  color: white;
+  padding: 15px 50px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+}
+
+span {
+  z-index: 20;
+}
+
+button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -36px;
+  left: -100px;
+  background: white;
+  width: 50px;
+  height: 125px;
+  opacity: 20%;
+  transform: rotate(-45deg);
+}
+
+button:hover:after {
+  left: 120%;
+  transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+  -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
 }
