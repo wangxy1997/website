@@ -13,21 +13,69 @@ body {
   font-family: 微软雅黑, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 }
 
+.loginBg {
+  /*设置元素被查看位置的视图 结合rotate*/
+  -webkit-perspective: 800px;
+  perspective: 800px;
+}
+
 .login {
+  /*居中*/
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
   top: 0;
   bottom: 0;
+  /*背景渐变颜色*/
   background: -webkit-gradient(linear, left bottom, right top, color-stop(50%, #35394a), color-stop(100%, rgb(0, 0, 0)));
   background: -webkit-linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
   background: linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
-  width: 350px;
-  height: 430px;
+  width: 320px;
+  height: 400px;
+  /*外阴影*/
   box-shadow: -15px 15px 15px rgba(6, 17, 47, 0.7);
   padding: 50px 30px;
   box-sizing: border-box;
+  /*
+  !*过渡效果*!
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.25, 0.265, 0.85);
+  -webkit-transition-property: -webkit-transform,opacity,box-shadow,top,left;
+  transition-property: transform,opacity,box-shadow,top,left;
+  !*过渡时间*!
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+  */
+  /*简化*/
+  -webkit-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
+  -moz-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
+  -ms-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
+  -o-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
+  /*旋转元素的基点位置*/
+  -webkit-transform-origin: 161px 100%;
+  -ms-transform-origin: 161px 100%;
+  transform-origin: 161px 100%;
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  z-index: 9999;
+}
+
+.test {
+  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+  /*不可点击*/
+  pointer-events: none;
+  /*上移100px 左移320*/
+  top: -100px !important;
+  left: -320px !important;
+  /*X轴旋转65度  缩小80%*/
+  -webkit-transform: rotateX(65deg) scale(0.8) !important;
+  transform: rotateX(65deg) scale(0.8) !important;
+  /*透明度60%*/
+  opacity: .6 !important;
+  /*高斯模糊效果1px*/
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
 }
 
 .login_title {
@@ -35,9 +83,9 @@ body {
   height: 40px;
   line-height: 40px;
   text-align: left;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .login_form i {
@@ -45,9 +93,10 @@ body {
   top: 50%;
   transform: translateY(-50%);
   color: #ffffff;
-  opacity: 1;
+  opacity: .5;
   font-size: 18px;
 }
+
 .login_form .login_input .el-input__inner {
   background: transparent;
   border: 0;
@@ -55,41 +104,61 @@ body {
   font-size: 18px;
   color: #61BFFF;
 }
-.login_form .el-form-item{
+
+.login_form .el-form-item {
   position: relative;
-  margin-bottom: 0;
-}
-.icon_opacity{
-  opacity: .5 !important;
+  margin-bottom: 8px;
 }
 
+.icon_opacity i {
+  opacity: 1 !important;
+}
 
+.J_codeimg {
+  cursor: pointer;
+  width: 30%;
+  margin-left: 15px;
+}
 
+.login_code .el-form-item__content {
+  display: flex;
+}
 
+.login_code .el-input {
+  width: 100%;
+}
 
-/*动画效果*/
-
-button {
-  border: 2px solid white;
+.login_btn {
+  border: 1px solid white;
   background: transparent;
   text-transform: uppercase;
   color: white;
-  padding: 15px 50px;
+  padding: 8px 40px;
   outline: none;
   overflow: hidden;
   position: relative;
+  margin-top: 30px;
+  cursor: pointer;
 }
 
-span {
+.login_btn:active {
+  background-color: rgba(76, 201, 240, .7);
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, .7);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, .7);
+  box-shadow: 10px 10px 99px 6px rgba(76, 201, 240, .7);
+}
+
+.login_btn > span {
   z-index: 20;
+  font-size: 16px;
 }
 
-button:after {
+.login_btn:after {
   content: '';
   display: block;
   position: absolute;
   top: -36px;
-  left: -100px;
+  left: -75px;
   background: white;
   width: 50px;
   height: 125px;
@@ -97,8 +166,125 @@ button:after {
   transform: rotate(-45deg);
 }
 
-button:hover:after {
-  left: 120%;
+.login_btn:hover:after {
+  left: 135%;
   transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
   -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+}
+
+.login_input::before, .login_input::after {
+  box-sizing: inherit;
+  position: absolute;
+  content: '';
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+
+.login_input::after {
+  bottom: 0;
+  right: 0;
+}
+
+.login_input::before {
+  top: -4px;
+  left: -4px;
+}
+
+.icon_opacity .login_input:before, .login_input:after {
+  width: 100%;
+  height: 100%;
+}
+
+.icon_opacity .login_input:before {
+  border-top-color: rgba(76, 201, 240, .7);
+  border-right-color: rgba(76, 201, 240, .7);
+  transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
+}
+
+.icon_opacity .login_input:after {
+  border-bottom-color: rgba(76, 201, 240, .7);
+  border-left-color: rgba(76, 201, 240, .7);
+  transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 1s;
+}
+
+.authent {
+  /*居中*/
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 170px;
+  bottom: 0;
+  width: 250px;
+  height: 120px;
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(50%, #35394a), color-stop(100%, rgb(0, 0, 0)));
+  background: -webkit-linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
+  background: linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
+  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.login_authent {
+  opacity: 1;
+  left: 270px;
+  transition: left .5s ease-out 1s, opacity .3s ease-out 1s;
+}
+
+.authent .loader {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.authent > p {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.authent .loader > div:first-child {
+  height: 30px;
+  width: 30px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  animation: turn 1s 0s cubic-bezier(.09, .57, .49, .9) infinite;
+}
+
+.authent .loader > div:last-child {
+  height: 13px;
+  width: 13px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  animation: turn 1s 0s cubic-bezier(.09, .57, .49, .9) infinite;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+}
+
+@keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg) scale(0.6);
+    transform: rotate(180deg) scale(0.6);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+    transform: rotate(360deg) scale(1);
+  }
+
 }

@@ -26,8 +26,16 @@
           <canvas class="J_codeimg" id="myCanvas" @click="showCheck">{{ canvasTxt }}</canvas>
         </el-form-item>
 
-        <button class="login_btn" @click="login = true"><span>登 录</span></button>
+        <button class="login_btn" @click="loginHandler"><span>登 录</span></button>
       </el-form>
+    </div>
+    <!--用户认证-->
+    <div :class="login? 'authent login_authent' : 'authent'">
+      <div class="loader">
+          <div></div>
+          <div></div>
+      </div>
+      <p>认证中...</p>
     </div>
   </div>
 </template>
@@ -66,6 +74,12 @@ export default {
     this.showCheck()
   },
   methods: {
+    loginHandler () {
+      this.login = true
+      setTimeout(() => {
+        this.login = false
+      }, 3000)
+    },
     showCheck () {
       this.createCode()
       var c = document.getElementById('myCanvas')
