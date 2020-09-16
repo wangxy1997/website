@@ -11,7 +11,7 @@
           <i class="el-icon-user"></i>
           <!--input 聚焦和失去焦点-->
           <el-input @focus="isName = true" @blur="isName = false" class="login_input"
-                    v-model="form.name" placeholder="用户名"></el-input>
+                    v-model="form.userName" placeholder="用户名"></el-input>
         </el-form-item>
         <el-form-item :class="ispassword ? 'icon_opacity': ''">
           <i class="el-icon-lock"></i>
@@ -55,15 +55,15 @@ export default {
       isCode: false,
       CodeVal: '',
       form: {
-        name: '',
-        password: '',
-        code: '',
+        userName: 'Admin',
+        password: '123456',
+        code: ''
       },
       // 验证码参数
       codeLength: 4,
       selectChar: [1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
       canvasTxt: '对不起，您的浏览器不支持canvas，请下载最新版浏览器!',
-      login: false,
+      login: false
     }
   },
   mounted () {
@@ -76,6 +76,10 @@ export default {
   methods: {
     loginHandler () {
       this.login = true
+      // this.$api.post('/login', this.form, r => {
+      //   console.log(r)
+      //   this.login = false
+      // })
       setTimeout(() => {
         this.login = false
       }, 3000)
@@ -88,6 +92,7 @@ export default {
       ctx.font = "80px 'Hiragino Sans GB'"
       ctx.fillStyle = '#E8DFE8'
       ctx.fillText(this.CodeVal, 0, 100)
+      this.form.code = this.CodeVal
     },
     // 生成验证码
     createCode () {
