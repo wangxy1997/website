@@ -8,7 +8,7 @@ function info(arr) {
         $(".login_input").click(function (e) {
           e.stopPropagation();
         })
-        $("body").click(function (e) {
+        $("#clickLogin").click(function (e) {
             var a;
             if(arr != null && arr != '' && arr.length > 0){
               a = arr

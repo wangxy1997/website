@@ -47,11 +47,11 @@ body {
   transition-duration: .5s;
   */
   /*简化*/
-  -webkit-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
-  -moz-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
-  -ms-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
-  -o-transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out, box-shadow 0.5s ease-out, top 0.5s ease-out, left 0.5s ease-out 0.5s;
+  -webkit-transition: transform 0.3s ease-out, opacity 0.3s ease-out, box-shadow 0.3s ease-out, top 0.3s ease-out, left 0.3s ease-out 0.3s;
+  -moz-transition: transform 0.3s ease-out, opacity 0.3s ease-out, box-shadow 0.3s ease-out, top 0.3s ease-out, left 0.3s ease-out 0.3s;
+  -ms-transition: transform 0.3s ease-out, opacity 0.3s ease-out, box-shadow 0.3s ease-out, top 0.3s ease-out, left 0.3s ease-out 0.3s;
+  -o-transition: transform 0.3s ease-out, opacity 0.3s ease-out, box-shadow 0.3s ease-out, top 0.3s ease-out, left 0.3s ease-out 0.3s;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, box-shadow 0.3s ease-out, top 0.3s ease-out, left 0.3s ease-out 0.3s;
   /*旋转元素的基点位置*/
   -webkit-transform-origin: 161px 100%;
   -ms-transform-origin: 161px 100%;
@@ -62,7 +62,7 @@ body {
 }
 
 .test {
-  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.35);
   /*不可点击*/
   pointer-events: none;
   /*上移100px 左移320*/
@@ -221,7 +221,7 @@ body {
   background: -webkit-gradient(linear, left bottom, right top, color-stop(50%, #35394a), color-stop(100%, rgb(0, 0, 0)));
   background: -webkit-linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
   background: linear-gradient(230deg, rgba(53, 57, 74, .5) 0%, rgb(0, 0, 0) 100%);
-  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.55);
+  box-shadow: 0px 20px 30px 3px rgba(0, 0, 0, 0.35);
   color: #ffffff;
   opacity: 0;
   display: flex;
@@ -232,7 +232,7 @@ body {
 .login_authent {
   opacity: 1;
   left: 270px;
-  transition: left .5s ease-out 1s, opacity .3s ease-out 1s;
+  transition: left .3s ease-out .3s, opacity .3s ease-out .3s;
 }
 
 .authent .loader {
@@ -287,4 +287,27 @@ body {
     transform: rotate(360deg) scale(1);
   }
 
+}
+
+.index-vue{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.left-menu{
+  width: 250px;
+  height: 100%;
+  background: #333333;
+}
+.logo{
+  height: 80px;
+  line-height: 80px;
+  background: #333333;
+  color: #ffffff;
+  text-align: center;
+}
+.logo>img{
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
 }

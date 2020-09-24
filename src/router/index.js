@@ -9,6 +9,13 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: () => import('@/views/login/index')
+    },
+    {
+      path: '/index',
+      name: 'Index',
+      component: () => import('@/views/homePage/index')
     }
-  ]
+  ],
+  // mode: 'hash'
+  mode: 'history'
 })

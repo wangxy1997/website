@@ -1,7 +1,7 @@
 
 .loginBg {
   background-image: url("../img/bodyBg.jpg");
-  background: cadetblue;
+  /*background: cadetblue;*/
   background-size: 100%;
   background-attachment: fixed;
   filter: alpha(opacity=85);

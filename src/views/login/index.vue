@@ -1,24 +1,24 @@
 <template>
-  <div class="loginBg">
+  <div id="clickLogin" class="loginBg">
     <!--雪花容器-->
     <div id="page_end_html"></div>
     <!--表单-->
     <div :class="login ? 'login test': 'login '">
       <p class="login_title">欢迎登录后台管理系统</p>
-      <el-form class="login_form" ref="form" :model="form">
-        <el-form-item :class="isName ? 'icon_opacity': ''">
+      <el-form class="login_form" ref="form" :model="form" :rules="rules">
+        <el-form-item :class="isName ? 'icon_opacity': ''" prop="userName">
           <!--点击透明度-->
           <i class="el-icon-user"></i>
           <!--input 聚焦和失去焦点-->
           <el-input @focus="isName = true" @blur="isName = false" class="login_input"
                     v-model="form.userName" placeholder="用户名"></el-input>
         </el-form-item>
-        <el-form-item :class="ispassword ? 'icon_opacity': ''">
+        <el-form-item :class="ispassword ? 'icon_opacity': ''" prop="password">
           <i class="el-icon-lock"></i>
           <el-input @focus="ispassword = true" @blur="ispassword = false" class="login_input"
                     v-model="form.password" placeholder="密码"></el-input>
         </el-form-item>
-        <el-form-item :class="isCode ? 'login_code icon_opacity': 'login_code'">
+        <el-form-item :class="isCode ? 'login_code icon_opacity': 'login_code'" prop="code">
           <i class="el-icon-key"></i>
           <el-input @focus="isCode = true" @blur="isCode = false" class="login_input"
                     v-model="form.code" placeholder="验证码"></el-input>
@@ -26,7 +26,7 @@
           <canvas class="J_codeimg" id="myCanvas" @click="showCheck">{{ canvasTxt }}</canvas>
         </el-form-item>
 
-        <button class="login_btn" @click="loginHandler"><span>登 录</span></button>
+        <button @click.prevent="loginHandler" class="login_btn"><span>登 录</span></button>
       </el-form>
     </div>
     <!--用户认证-->
@@ -54,8 +54,19 @@ export default {
       ispassword: false,
       isCode: false,
       CodeVal: '',
+      rules: {
+        userName: [
+          {required: true, message: '请输入用户名', trigger: 'blur'}
+        ],
+        password: [
+          {required: true, message: '请输入密码', trigger: 'blur'}
+        ],
+        code: [
+          {required: true, message: '请输入验证码', trigger: 'blur'}
+        ]
+      },
       form: {
-        userName: 'Admin',
+        userName: 'admin',
         password: '123456',
         code: ''
       },
@@ -75,19 +86,40 @@ export default {
   },
   methods: {
     loginHandler () {
-      this.login = true
-      // this.$api.post('/login', this.form, r => {
-      //   console.log(r)
-      //   this.login = false
-      // })
-      setTimeout(() => {
-        this.login = false
-      }, 3000)
+      this.$refs['form'].validate((valid) => {
+        if (valid) {
+          if (this.form.code.toUpperCase() !== this.CodeVal.toUpperCase()) {
+            this.$notify({
+              title: '警告',
+              message: '验证码错误',
+              type: 'warning'
+            })
+            this.showCheck()
+          } else {
+            this.login = true
+            setTimeout(() => {
+              this.$api.post('/login', this.form, response => {
+                console.log(response)
+                let res = response.data
+                if (res.errorCode === 0) {
+                  this.$notify.error({
+                    title: '错误',
+                    message: res.message
+                  })
+                } else {
+                  this.$router.push('/index')
+                }
+                this.login = false
+              })
+            }, 2000)
+          }
+        }
+      })
     },
     showCheck () {
       this.createCode()
-      var c = document.getElementById('myCanvas')
-      var ctx = c.getContext('2d')
+      let c = document.getElementById('myCanvas')
+      let ctx = c.getContext('2d')
       ctx.clearRect(0, 0, 1000, 1000)
       ctx.font = "80px 'Hiragino Sans GB'"
       ctx.fillStyle = '#E8DFE8'
@@ -98,8 +130,8 @@ export default {
     createCode () {
       this.CodeVal = ''
       // 验证码长度
-      for (var i = 0; i < this.codeLength; i++) {
-        var charIndex = Math.floor(Math.random() * 56)
+      for (let i = 0; i < this.codeLength; i++) {
+        let charIndex = Math.floor(Math.random() * 56)
         this.CodeVal += this.selectChar[charIndex]
       }
     }
