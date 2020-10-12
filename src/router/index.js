@@ -14,8 +14,13 @@ export default new Router({
       path: '/index',
       name: 'Index',
       component: () => import('@/views/homePage/index')
+    },
+    {
+      path: '/layout',
+      name: 'Layout',
+      component: () => import('@/views/layout/index')
     }
   ],
-  // mode: 'hash'
-  mode: 'history'
+  mode: 'hash'
+  // mode: 'history'
 })
