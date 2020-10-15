@@ -43,6 +43,7 @@
 <script>
 import '@/style/js/jquery-2.2.0.min.js'
 import { editInfo } from '@/style/js/TS_❤.js'
+import Cookies from "js-cookie"
 import '@/style/js/explode.js'
 export default {
   name: 'index',
@@ -98,16 +99,17 @@ export default {
           } else {
             this.login = true
             setTimeout(() => {
-              this.$api.post('/login', this.form, response => {
-                console.log(response)
-                let res = response.data
+              this.$api.login.login(this.form).then((res) => {
                 if (res.errorCode === 0) {
                   this.$notify.error({
                     title: '错误',
                     message: res.message
                   })
                 } else {
-                  this.$router.push('/index')
+                  Cookies.set('accessToken', res.token)
+                  sessionStorage.setItem('user', this.form.userName) // 保存用户到本地会话
+                  this.$store.commit('menuRouteLoaded', false) // 要求重新加载导航菜单
+                  this.$router.push('/')
                 }
                 this.login = false
               })
@@ -141,6 +143,6 @@ export default {
 
 <style scoped>
 /*登录页背景*/
-@import '../../style/css/login.css';
+@import '../style/css/login.css';
 
 </style>

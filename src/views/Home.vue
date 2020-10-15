@@ -4,7 +4,7 @@
     <div class="layout-left">
       <!--logo-->
       <div class="logo">
-        <img src="../../style/img/logo.png" alt="">
+        <img src="../style/img/logo.png" alt="">
         <span>后台管理系统</span>
       </div>
       <!--菜单栏-->
@@ -57,7 +57,7 @@ export default {
   methods: {
     handleSelect (key, keyPath) {
       // this.key = key
-      // this.$router.push(key)
+      this.$router.push(key)
       console.log(key)
       console.log(keyPath)
     },

@@ -10,15 +10,19 @@ import App from './App'
 // 引入路由
 import router from './router'
 // 引入axios请求
-import axios from './http/index.js'
+// import axios from './http/index.js'
 // 引入mock数据
-import './mock'
+import './mock/index'
+import store from './store'
 
+// vue 插件的形式引入 axios
+import api from './http/index'
+Vue.use(api)
 // 全局注册elementUI
 Vue.use(ElementUI)
 
 // 将API方法绑定到全局
-Vue.prototype.$api = axios
+// Vue.prototype.$api = axios
 
 Vue.config.productionTip = false
 
@@ -29,6 +33,7 @@ require('./style/css/project.css')
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
